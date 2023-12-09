@@ -1,15 +1,26 @@
-function searchSeries(event) {
-  event.preventDefault();
+function calculate() {
+  let num1 = parseFloat(document.getElementById("num1").value);
+  let num2 = parseFloat(document.getElementById("num2").value);
+  let operation = document.getElementById("operation").value;
 
-  let query = document.getElementById("query").value;
+  let result;
+  switch (operation) {
+    case "add":
+      result = num1 + num2;
+      break;
+    case "subtract":
+      result = num1 - num2;
+      break;
+    case "multiply":
+      result = num1 * num2;
+      break;
+    case "divide":
+      result = num1 / num2;
+      break;
+    default:
+      result = "Invalid operation";
+  }
 
-  fetch(`https://api.tvmaze.com/search/shows?q=${query}`)
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-
-      let resultElement = document.getElementById("result");
-      resultElement.textContent = JSON.stringify(data, null, 2);
-    })
-    .catch(error => console.error("Error fetching data:", error));
+  let resultElement = document.getElementById("result");
+  resultElement.textContent = "Result: " + result;
 }
