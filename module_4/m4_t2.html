@@ -3,9 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Task 2</title>
-    <script src="m4_t2.js"></script>
+    <script src="m4_t2.js" defer></script>
 </head>
 <body>
-
+<form id="searchForm" action="https://api.tvmaze.com/search/shows" onsubmit="searchSeries(event)">
+  <label for="query">Enter TV Series:</label>
+  <input id="query" name="q" type="text" required>
+  <input type="submit" value="Search">
+</form>
+<pre id="result"></pre>
 </body>
 </html>
